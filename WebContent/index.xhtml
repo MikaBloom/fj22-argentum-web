@@ -13,16 +13,20 @@
 	<p:panel header="Negociações" footer="Argentum Web">
 		
 		<h:form id="listaNegociacao">
-			<p:dataTable var="negociacao" value="#{argentumBean.negociacoes}" paginator="true" rows="15">
+			<p:dataTable var="negociacao" value="#{argentumBean.negociacoes}" paginator="true" rows="15" draggableColumns="true" >
 				
 				<p:column sortBy="#{negociacao.preco}" headerText="Preço">
-					<h:outputText value="#{negociacao.preco}"/>
+					<h:outputText value="#{negociacao.preco}">
+						<f:convertNumber pattern="R$ ####.##"></f:convertNumber>
+					</h:outputText>
 				</p:column>
 				<p:column headerText="Quantidade">
 					<h:outputText value="#{negociacao.quantidade}"/>
 				</p:column>
 				<p:column headerText="Volume">
-					<h:outputText value="#{negociacao.volume}"/>
+					<h:outputText value="#{negociacao.volume}">
+						<f:convertNumber pattern="#####.##"></f:convertNumber>
+					</h:outputText>
 				</p:column>
 				<p:column sortBy="#{negociacao.data}" headerText="Data">
 					<h:outputText value="#{negociacao.data.time}">
