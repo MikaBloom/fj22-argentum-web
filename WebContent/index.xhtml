@@ -11,9 +11,11 @@
 	<h:outputText value="Olá JSF!"/>
 	
 	<p:panel header="Negociações" footer="Argentum Web">
+	
+		<p:lineChart value="#{argentumBean.modeloGrafico}" legendPosition="e" title="PETR4"/>
 		
 		<h:form id="listaNegociacao">
-			<p:dataTable var="negociacao" value="#{argentumBean.negociacoes}" paginator="true" rows="15" draggableColumns="true" >
+			<p:dataTable var="negociacao" value="#{argentumBean.negociacoes}" paginator="true" rows="15">
 				
 				<p:column sortBy="#{negociacao.preco}" headerText="Preço">
 					<h:outputText value="#{negociacao.preco}">
@@ -25,7 +27,7 @@
 				</p:column>
 				<p:column headerText="Volume">
 					<h:outputText value="#{negociacao.volume}">
-						<f:convertNumber pattern="#####.##"></f:convertNumber>
+						<f:convertNumber pattern="R$ #####.##"></f:convertNumber>
 					</h:outputText>
 				</p:column>
 				<p:column sortBy="#{negociacao.data}" headerText="Data">
